@@ -19,7 +19,7 @@ export default defineConfig({
             { text: 'Home', link: '/' },
             { text: 'Guide', link: '/guide/' },
             { text: 'Playground', link: '/playground/' },
-            { text: 'Demo', link: 'https://mathflow.github.io/demo' },
+            // { text: 'Demo', link: 'https://mathflow.github.io/demo' },
             {
                 text: 'About',
                 items: [
