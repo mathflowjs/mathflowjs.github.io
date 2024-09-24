@@ -28,7 +28,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           registry-url: https://registry.npmjs.org/
-          node-version: 18
+          node-version: lts/*
 
       - uses: pnpm/action-setup@v2
         name: Install pnpm
@@ -53,7 +53,7 @@ jobs:
         run: pnpm install
 
       - name: Build
-        run: pnpm docs:build
+        run: pnpm build
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
