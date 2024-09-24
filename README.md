@@ -13,4 +13,4 @@ Ensure that [nodejs](https://nodejs.org) and [pnpm](https://pnpm.io) are install
 
 ## License
 
-MIT
+MIT : Check [license](./LICENSE.txt) for details. 
