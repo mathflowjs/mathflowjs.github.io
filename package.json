@@ -1,0 +1,21 @@
+{
+  "name": "mathflowjs.github.io",
+  "version": "0.0.0",
+  "description": "A documentation website for mathflowjs hosted on Github Pages",
+  "type": "module",
+  "scripts": {
+    "dev": "vitepress dev docs",
+    "build": "vitepress build docs"
+  },
+  "author": {
+    "name": "Henry Hale",
+    "url": "https://github.com/henryhale"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "vitepress": "^1.3.4"
+  },
+  "dependencies": {
+    "mathflow": "^0.3.0"
+  }
+}
