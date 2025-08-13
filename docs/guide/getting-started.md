@@ -1,38 +1,69 @@
 # Getting Started
 
-## Preresquities
+## Prerequisites
 
-Before getting started, make sure that you have the following installed on your machine;
-
--   [Node.js](https://nodejs.org)
--   [npm](https://npmjs.org)
+Before getting started, make sure you have the following installed:
+- [Node.js](https://nodejs.org) 
+- [npm](https://npmjs.org) or [pnpm](https://pnpm.io)
 
 ## Installation
 
-You can install MathFlow via npm:
+Install MathFlow with:
 
-```sh:no-line-numbers
-npm install mathflow
-# pnpm add mathflow
+:::code-group
+```sh [npm]
+$ npm install mathflow
 ```
+```sh [pnpm]
+$ pnpm add mathflow
+```
+```sh [yarn]
+$ yarn add mathflow
+```
+```sh [bun]
+$ bun add mathflow
+```
+:::
 
 ## Usage
 
-```js
-import { evaluate } from 'mathflow';
+MathFlow exposes two main usage patterns:
 
-// Example script
-const script = `
-# Hello MathFlow! 
-1 * 3 - 2 + 2sin(30)
-`;
+### Basic Usage (Recommended)
 
-const result = evaluate(script);
+```js:line-numbers
+import { createContext } from 'mathflow';
 
-console.log(result);
-// Output: { value: 2, scope: { variables: {} }, solution: ... }
+const ctx = createContext();
+const result = ctx.solve('1 * 3 - 2 + 2sin(30)');
+
+console.log(result.value); // 2
 ```
 
-To learn the MathFlow syntax, head over to the [syntax](./basics.md) section for details.
+### Advanced/Procedural Usage
 
-For more examples, check the [examples](./scripts.md) section.
+For step-by-step or custom evaluation:
+
+```js:line-numbers
+import { 
+    createContext,
+    tokenize,
+    parse,
+    evaluate,
+    createSolutionStack
+} from 'mathflow';
+
+const ctx = createContext();
+const solution = createSolutionStack();
+const tokens = tokenize(ctx, '1 * 3 - 2 + 2sin(30)');
+const ast = parse(tokens);
+const value = evaluate(ctx, ast.body[0], solution);
+
+console.log(value); // 2
+console.log(solution.steps); // step-by-step solution
+```
+
+---
+
+To learn the MathFlow syntax, see the [Syntax](./basics.md) section.
+Check the [Examples](./examples/index.md) section for more.

@@ -1,36 +1,59 @@
 # Built-ins
 
+MathFlow comes with a rich set of built-in constants and functions for mathematical computation. These are available in every context by default.
+
 ## Constants
 
-Mathflow comes with pre-defined universal constants to ease your workflow.
-
-- `pi` - This is the ratio of the circumference of a circle to its diameter
-- `e` - The mathematical constant _e_. This is Euler's number, the base of natural logarithms.
+- `pi` — Ratio of a circle's circumference to its diameter (`3.14159...`)
+- `e` — Euler's number, the base of natural logarithms (`2.71828...`)
 
 ## Functions
 
-Just like Mathematics, MathFlow has commonly used functions built in. A full list of those functions can be found in this [file](https://github.com/henryhale/mathflow/blob/master/src/global.ts).
+### Arithmetic & Numbers
+- `add(x, y, ...)` — Sum of arguments
+- `sub(x, y)` — Subtraction
+- `mul(x, y, ...)` — Product of arguments
+- `div(x, y)` — Division
+- `mod(x, y)` — Modulo
+- `abs(x)` — Absolute value
+- `ceil(x)` — Ceiling
+- `floor(x)` — Floor
+- `sign(x)` — Sign (1 if positive, 0 if not)
+- `sqrt(x)` — Square root
+- `pow(x, y)` — x to the power y
+- `cbrt(x)` — Cube root
+- `root(x, y)` — y-th root of x
+- `trunc(x)` — Truncate to integer
 
--   `exp` - returns _e_ (the base of natural logarithms) raised to a power
--   `log` - returns the base 10 logarithm of a number
--   `ln` - returns the natural logarithm of a number
--   `deg` - convert radians into degrees
--   `rad` - convert degrees into radians
--   `sin` - returns the sine of a number in degrees
--   `cos` - returns the cosine of a number in degrees
--   `tan` - returns the tangent of a number in degrees
--   `asin` - equivalent to arcsine of a number
--   `acos` - equivalent to arcosine of a number
--   `atan` - equivalent to arctangent of a number
--   `sqrt` - returns the square root of a number
+### Logarithms & Exponentials
+- `exp(x)` — e^x
+- `ln(x)` — Natural logarithm
+- `log(x, y)` — Logarithm of x base y
+- `log10(x)` — Base-10 logarithm
+- `log2(x)` — Base-2 logarithm
 
-**Examples:**
+### Trigonometry (angle mode: degrees or radians)
+- `sin(x)`, `cos(x)`, `tan(x)` — Sine, cosine, tangent
+- `asin(x)`, `acos(x)`, `atan(x)` — Inverse trigonometric functions
+- `csc(x)`, `sec(x)`, `cot(x)` — Cosecant, secant, cotangent
+- `sinh(x)`, `cosh(x)`, `tanh(x)` — Hyperbolic functions
+- `asinh(x)`, `acosh(x)`, `atanh(x)` — Inverse hyperbolic functions
+- `deg(x)` — Convert radians to degrees
+- `rad(x)` — Convert degrees to radians
+- `hypot(x, y)` — sqrt(x² + y²)
+- `versin(x)` — 1 - cos(x)
+- `coversin(x)` — (1 - cos(x)) / 2
 
-These functions can take up a single number or expression.
+## Examples
 
 ```js
-log(100)        // 2
-sin(15 + 15)    // 0.5
-cos(acos(0.5))  // 0.5
-sqrt(4)         // 2
+const ctx = createContext();
+ctx.solve('log(100, 10)'); // 2
+ctx.solve('sin(90)'); // 1 (if angles = 'deg')
+ctx.solve('sqrt(16)'); // 4
+ctx.solve('hypot(3, 4)'); // 5
 ```
+
+---
+
+See also: [Configuration](./config.md) for angle mode and precision settings.

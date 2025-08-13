@@ -36,7 +36,6 @@ export default defineConfig({
                 items: [
                     { text: 'Introduction', link: '/guide/' },
                     { text: 'Getting Started', link: '/guide/getting-started' },
-                    { text: 'Configuration', link: '/guide/config' }
                 ]
             },
             {
@@ -49,15 +48,19 @@ export default defineConfig({
                 ]
             },
             {
-                text: 'Examples',
+                text: 'Reference',
                 items: [
-                    { text: 'Scripts', link: '/guide/scripts' },
-                    { text: 'Programs', link: '/guide/programs' }
+                    { text: 'Context API', link: '/api/' },
+                    { text: 'Procedural API', link: '/api/procedural' },
+                    { text: 'Error Handling', link: '/api/errors' },
+                    { text: 'Rendering', link: '/api/rendering' },
                 ]
             },
             {
-                text: 'API Reference',
-                link: '/api/'
+                text: 'Examples',
+                items: [
+                    { text: 'Samples', link: '/examples/' }
+                ]
             }
         ],
 
@@ -68,17 +71,17 @@ export default defineConfig({
         editLink: {
             text: 'Edit this page on GitHub',
             pattern:
-                'https://github.com/mathflowjs/mathflow/edit/master/:path'
+                'https://github.com/mathflowjs/mathflowjs.github.io/edit/master/docs/:path'
         },
 
         footer: {
             message:
-                'Released under the <a href="https://github.com/mathflowjs/mathflow/blob/master/LICENSE.md">MIT License</a>.',
+                'Released under the <a href="https://github.com/mathflowjs/mathflow/blob/master/LICENSE.txt">MIT License</a>.',
             copyright:
-                'Copyright &copy; 2024, <a href="https://github.com/henryhale">Henry Hale</a> - 2024-present MathFlow.'
+                'Copyright &copy; 2024-present, <a href="https://github.com/henryhale">Henry Hale</a>.'
         }
     },
     markdown: {
-        lineNumbers: true
+        lineNumbers: false
     }
 });

@@ -18,7 +18,7 @@ hero:
           link: /playground/
         - theme: alt
           text: View on GitHub
-          link: https://github.com/henryhale/mathflow
+          link: https://github.com/mathflowjs/mathflow
 
 features:
     - title: Mathematical Expressions

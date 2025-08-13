@@ -1,39 +1,40 @@
 # Introduction
 
-:wave: Hello World!
-
-You're reading the official documentation for [MathFlow](https://github.com/henryhale/mathflow).
+Welcome to the official documentation for [MathFlow](https://github.com/mathflowjs/mathflow)!
 
 ## What is MathFlow?
 
-**MathFlow** is a lightweight and expressive scripting language designed for mathematical expressions and calculations. It provides a simple and intuitive syntax for performing mathematical operations, including support for standard arithmetic, functions like sin, cos, tan, and other functions.
+**MathFlow** is a lightweight, expressive JavaScript library for mathematical expressions and calculations. It provides a simple, intuitive syntax for arithmetic, algebra, trigonometry, logarithms, and more.
 
-## What MathFlow is not?
+## What MathFlow is not
 
 ::: warning
-- MathFlow is not a fully-fledged scripting language. This means that it can not be used to build applications by itself.
+- MathFlow is not a general-purpose programming language. It is focused on mathematical computation and basic scripting.
 :::
 
 ## Main Objectives
 
-The main goals of this project include _expressiveness, focus, and simplicity_.
-This implies that the development of this project tends in the direction of providing a better and mathematics-centric usecase.
+MathFlow aims for _expressiveness_, _focus_, and _simplicity_, making it ideal for math-centric applications, calculators, and educational tools.
 
 ## How it Works
 
-This section describes how MathFlow is able to work.
+MathFlow exposes an [API](../api/index.md) for evaluating code, solving equations, rendering, and more. The typical evaluation process:
 
-This library [API](../api/index.md) exposes the `evaluate` function that takes the MathFlow code and returns a result. Below are the stages the source code undergoes to produce the result;
+1. A global scope for variables is created.
+2. Source code is split into statements, whitespace is trimmed, and composite terms like `2x` are expanded to `2*x`.
+3. Variable declarations are executed and stored in the scope.
+4. Each statement is tokenized, parsed into an AST, and interpreted.
+5. The result of the last statement is returned, along with the final scope.
 
--   A global scope that holds all variables is created
--   The source code is then split into individual statements. This process involves;
-    -   Trimming whitespaces
-    -   Expanding composite terms like `2x` into `2*x`
-    -   Varible declarations are extracted, their assigned value or expression executed and stored in the global scope variables dictionary
-    -   Empty lines or statements are ignored
--   Every statement in the generated list of statements is executed independently. This stage involves the followings;
-    -   The statement is tokenized to generate a list of identified tokens
-    -   The tokens are then parsed into an Abstract Syntax Tree (AST) basing on the order of operations and precedence of the operators used.
-    -   The tree is then interpreted by running through the every node identifying the node type and applying the corresponding operation or computation.
-    -   The output of the interpreter is a numerical value.
--   The resultant value of the last statement is returned with the final state of the global scope.
+
+## Documentation Structure
+
+- [Getting Started](./getting-started.md)
+- [Syntax & Basics](./basics.md)
+- [Expressions](./expressions.md)
+- [Variables](./variables.md)
+- [Built-ins](./builtin.md)
+- [Configuration](./config.md)
+- [Rendering](./rendering.md)
+- [Advanced Usage](./advanced.md)
+- [API Reference](../api/index.md)
