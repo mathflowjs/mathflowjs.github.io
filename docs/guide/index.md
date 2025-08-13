@@ -27,14 +27,3 @@ MathFlow exposes an [API](../api/index.md) for evaluating code, solving equation
 5. The result of the last statement is returned, along with the final scope.
 
 
-## Documentation Structure
-
-- [Getting Started](./getting-started.md)
-- [Syntax & Basics](./basics.md)
-- [Expressions](./expressions.md)
-- [Variables](./variables.md)
-- [Built-ins](./builtin.md)
-- [Configuration](./config.md)
-- [Rendering](./rendering.md)
-- [Advanced Usage](./advanced.md)
-- [API Reference](../api/index.md)

@@ -2,7 +2,7 @@
 
 MathFlow configuration is managed through the properties of a context. 
 
-Use the `ContextAPI` for most tasks. This provides a simple interface for solving, rendering, and managing variables/functions/constants.
+This provides a simple interface for solving, rendering, and managing variables/functions/constants.
 
 ## Creating a context
 
@@ -74,7 +74,7 @@ const ctx = createContext({
 
 // or
 
-ctx.preferences.fractionDigits = 'deg'
+ctx.preferences.fractionDigits = 10
 ```
 
 #### precision
@@ -93,11 +93,11 @@ const ctx = createContext({
 
 // or
 
-ctx.preferences.precision = 'deg'
+ctx.preferences.precision = 20
 ```
 
 ### variables
-You can provide predefined variables to the context at its creation:
+You can provide predefined variables and constants to the context at its creation:
 
 - **Type**: `Record<string, number>`
 
@@ -105,6 +105,9 @@ You can provide predefined variables to the context at its creation:
 const ctx = createContext({
     variables: {
         x: 1,
+    },
+    constants: {
+        g: 9.81
     }
 })
 ```
@@ -115,22 +118,27 @@ For an existing context, use:
 
 ```ts
 ctx.variables.set('x', 1)
-```
-
-### constants
-
-Like [variables](#variables), the constants can be defined in a similar way:
-
-```ts
-const ctx = createContext({
-    constants: {
-        g: 9.81
-    }
-})
-
-// or
 
 ctx.constants.set('g', 9.81)
+```
+
+Managing variables using:
+
+```js
+// Check if variable exists
+ctx.variables.has('x')    // true/false
+
+// Get variable value
+ctx.variables.get('x')    // Returns value
+
+// Set variable value
+ctx.variables.set('x', 10)
+
+// Delete variable
+ctx.variables.delete('x')
+
+// Clear all variables
+ctx.variables.clear()
 ```
 
 ### functions
@@ -177,27 +185,8 @@ Evaluate multiple mathematical expressions at once
 ```ts
 ctx.solveBatch(`x=2\ny=3x\nz=x+y`)
 // [ 
-//   { value: 2, solution: ['2'] },
-//   { value: 6, solution: ['3 * 2', '6'] },
-//   { value: 8, solution: ['2 + 6', '8'] },
+//   { value: 2, solution: ['x = 2'] },
+//   { value: 6, solution: ['y = 3 * 2', 'y = 6'] },
+//   { value: 8, solution: ['z = 2 + 6', 'z = 8'] },
 // ]
 ```
-
-## Rendering expressions
-
-### renderAsHTML
-
-- **Type**: 
-- [default]
-- [description]
-- [example]
-- [see-also]
-
-### renderAsLaTeX
-
-
-- **Type**: 
-- [default]
-- [description]
-- [example]
-- [see-also]

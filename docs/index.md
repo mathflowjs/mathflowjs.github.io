@@ -4,8 +4,8 @@ layout: home
 
 hero:
     name: MathFlow
-    text: Simplifying Math, Empowering Code.
-    tagline: Ready to elevate your mathematical scripting experience?
+    text: A Robust Mathematical Expression Parser for JavaScript
+    tagline: Parse, evaluate and work with mathematical expressions with ease
     image: 
       src: /logo.svg
       alt: MathFlow Logo
@@ -21,16 +21,22 @@ hero:
           link: https://github.com/mathflowjs/mathflow
 
 features:
-    - title: Mathematical Expressions
+    - title: Expression Parsing
       icon: '📝'
-      details: Perform standard arithmetic operations with ease.
-    - title: Functions
+      details: Parse and evaluate mathematical expressions with support for variables and functions
+    - title: Rich Function Library
       icon: '🛠️'
-      details: Built-in support for mathematical functions such as sin, cos, tan, abs and more.
-    - title: Clean and Modern Syntax
-      icon: '✅'
-      details: Readable and easy-to-write syntax for mathematical expressions.
-    - title: Abstract Syntax Tree (AST)
+      details: Comprehensive set of mathematical functions including trigonometric, logarithmic, and algebraic operations
+    - title: Type Safety
+      icon: '🛡️'
+      details: Built with TypeScript for enhanced type safety and better developer experience
+    - title: Abstract Syntax Tree
       icon: '🌿'
-      details: Utilizes an AST for parsing and interpreting expressions.
+      details: Generate and work with ASTs for complex mathematical expressions
+    - title: Easy Integration
+      icon: '🔌'
+      details: Simple to integrate with any JavaScript/TypeScript project
+    - title: Extensible Design
+      icon: '🎯'
+      details: Add custom functions and operators to extend functionality
 ---
