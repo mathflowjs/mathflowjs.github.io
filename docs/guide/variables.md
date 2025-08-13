@@ -7,17 +7,17 @@ Variables in MathFlow are used to store values and make expressions reusable. Th
 ### Naming Rules
 
 1. **Start with a letter**
-   - Must begin with uppercase or lowercase letter
-   - Examples: `x`, `A`, `radius`, `Height`
+    - Must begin with uppercase or lowercase letter
+    - Examples: `x`, `A`, `radius`, `Height`
 
 2. **Case sensitivity**
-   - `x` and `X` are different variables
-   - `area` and `Area` are different variables
+    - `x` and `X` are different variables
+    - `area` and `Area` are different variables
 
 3. **Valid characters**
-   - Letters (a-z, A-Z)
-   - Numbers (0-9, not at start)
-   - Underscores (_)
+    - Letters (a-z, A-Z)
+    - Numbers (0-9, not at start)
+    - Underscores (\_)
 
 ```js
 // Valid variable names
@@ -56,7 +56,7 @@ average = total / 2
 ## Variable Scoping
 
 Variables in MathFlow are scoped to their [context](../api/index.md).
-Learn how to manage variables programmatically [here](../api/index.md#variables). 
+Learn how to manage variables programmatically [here](../api/index.md#variables).
 
 ## Using Variables
 
@@ -97,7 +97,7 @@ distance = sqrt((x2 - x1)^2 + (y2 - y1)^2)
 
 :::tip
 Use your preferred approach to naming variables.
-You are recommended that you use variable names just like you would on paper or at least close. 
+You are recommended that you use variable names just like you would on paper or at least close.
 Add precise comments to describe the use of the variable or significance of an expression.
 :::
 
@@ -123,7 +123,7 @@ Alternatively, be precise and add comments to describe variables:
 # radius of circle
 r = 5
 
-# area of cirlce 
+# area of cirlce
 A = pi * r * r
 
 # LESS CLEAR

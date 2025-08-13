@@ -10,6 +10,7 @@ MathFlow comes with a rich set of built-in constants and functions for mathemati
 ## Functions
 
 ### Arithmetic & Numbers
+
 - `add(x, y, ...)` : Sum of arguments
 - `sub(x, y)` : Subtraction
 - `mul(x, y, ...)` : Product of arguments
@@ -24,6 +25,7 @@ MathFlow comes with a rich set of built-in constants and functions for mathemati
 - `trunc(x)` : Truncate to integer
 
 ### Logarithms & Exponentials
+
 - `exp(x)` : e^x
 - `ln(x)` : Natural logarithm
 - `log(x, y)` : Logarithm of x base y
@@ -31,7 +33,9 @@ MathFlow comes with a rich set of built-in constants and functions for mathemati
 - `log2(x)` : Base-2 logarithm
 
 ### Trigonometry
+
 > Angle mode can be _degrees_ or _radians_ - See [Preferences](../api/index.md#angles) for details.
+
 - `sin(x)`, `cos(x)`, `tan(x)` : Sine, cosine, tangent
 - `asin(x)`, `acos(x)`, `atan(x)` : Inverse trigonometric functions
 - `csc(x)`, `sec(x)`, `cot(x)` : Cosecant, secant, cotangent

@@ -11,10 +11,12 @@ You can render mathematical expressions as HTML with customizable styling and th
 You can render MathFlow code as HTML using the context API (recommended):
 
 ```ts
-import { createContext } from 'mathflow';
+import { createContext } from "mathflow";
 
 const ctx = createContext();
-const html = ctx.renderAsHTML('sin(x) + 2^3', { /* options */ });
+const html = ctx.renderAsHTML("sin(x) + 2^3", {
+	/* options */
+});
 // html: '<span>sin(x) + 2<sup>3</sup></span>'
 ```
 
@@ -23,14 +25,17 @@ const html = ctx.renderAsHTML('sin(x) + 2^3', { /* options */ });
 For advanced usage, tokenize an expression and render manually:
 
 ```ts
-import { createContext, tokenize, renderTokensAsHTML } from 'mathflow';
+import { createContext, tokenize, renderTokensAsHTML } from "mathflow";
 
 const ctx = createContext();
-const tokens = tokenize(ctx, 'sin(x) + 2^3');
-const html = renderTokensAsHTML(tokens, { /* options */ });
+const tokens = tokenize(ctx, "sin(x) + 2^3");
+const html = renderTokensAsHTML(tokens, {
+	/* options */
+});
 ```
 
 ### Options
+
 You can customize the HTML output using `HTMLRenderOptions` listed below:
 
 - `classPrefix`: Prefix for CSS classes (default: `mf`)
@@ -38,6 +43,7 @@ You can customize the HTML output using `HTMLRenderOptions` listed below:
 - `includeDebugInfo`: Include position data attributes for debugging (`true` or `false`)
 
 **Default Options**:
+
 ```ts
 {
   classPrefix: 'mf',
@@ -55,11 +61,11 @@ You can convert mathematical expressions to LaTeX format, suitable for use with 
 You can render MathFlow code as LaTeX using the context API (recommended):
 
 ```ts
-import { createContext } from 'mathflow';
+import { createContext } from "mathflow";
 
 const ctx = createContext();
 
-const latex = ctx.renderAsLaTeX('sqrt(4) + pi', { mode: 'inline' });
+const latex = ctx.renderAsLaTeX("sqrt(4) + pi", { mode: "inline" });
 // latex: '$\\sqrt{4} + \\pi$'
 ```
 
@@ -68,27 +74,32 @@ const latex = ctx.renderAsLaTeX('sqrt(4) + pi', { mode: 'inline' });
 For advanced usage, tokenize an expression and render manually:
 
 ```ts
-import { createContext, tokenize, renderTokensAsLaTeX } from 'mathflow';
+import { createContext, tokenize, renderTokensAsLaTeX } from "mathflow";
 
 const ctx = createContext();
 
-const tokens = tokenize(ctx, 'sqrt(4) + pi');
+const tokens = tokenize(ctx, "sqrt(4) + pi");
 
-const latex = renderTokensAsLaTeX(tokens, { /* options */ });
+const latex = renderTokensAsLaTeX(tokens, {
+	/* options */
+});
 ```
 
 ### Options
+
 You can customize the LaTeX output using `LaTeXRenderOptions` listed below:
 
 - `mode`: LaTeX math mode (`inline` | `display` | `align`)
 
 **Default Options**:
+
 ```ts
 {
-  mode: 'inline'
+	mode: "inline";
 }
 ```
 
 ## Use Cases
+
 - Displaying results in web-based math editors
 - Exporting expressions for scientific papers

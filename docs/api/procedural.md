@@ -12,6 +12,7 @@ MathFlow's processing pipeline consists of four main stages:
 4. **Solution Tracking**: Recording step-by-step evaluation details
 
 ### Use Cases
+
 - Implementing custom evaluation strategies
 - Tracking step-by-step solutions
 - Building tools and extensions
@@ -22,16 +23,17 @@ MathFlow's processing pipeline consists of four main stages:
 ## Core Components
 
 ### tokenize
+
 `function tokenize(ctx: Context, input: string): Token[]`
 
 Converts a string input into a sequence of tokens.
 
 ```ts
-import { createContext, tokenize, TOKEN } from 'mathflow';
+import { createContext, tokenize, TOKEN } from "mathflow";
 
-const ctx = createContext()
+const ctx = createContext();
 
-const tokens = tokenize(ctx, '2*x + 1');
+const tokens = tokenize(ctx, "2*x + 1");
 // [
 //   { type: TOKEN.NUMBER, value: '2', line: 1, column: 1 },
 //   { type: TOKEN.OPERATOR, value: '*', line: 1, column: 2 },
@@ -42,36 +44,38 @@ const tokens = tokenize(ctx, '2*x + 1');
 ```
 
 **Token Types**:
+
 ```ts
 enum TOKEN {
-    NUMBER,
-    IDENTIFIER,
-    OPERATOR,
-    FUNCTION,
-    LPAREN,
-    RPAREN,
-    COMMA,
-    ASSIGNMENT,
-    NEWLINE,
-    EOF
+	NUMBER,
+	IDENTIFIER,
+	OPERATOR,
+	FUNCTION,
+	LPAREN,
+	RPAREN,
+	COMMA,
+	ASSIGNMENT,
+	NEWLINE,
+	EOF,
 }
 
 type Token = {
-    type: TOKEN
-    value: string
-    column: number
-    line: number
-    position: number
-}
+	type: TOKEN;
+	value: string;
+	column: number;
+	line: number;
+	position: number;
+};
 ```
 
 ### parse
+
 `function parse(tokens: Token[]): Node`
 
 Converts a sequence of tokens into an Abstract Syntax Tree (AST).
 
 ```ts
-import { parse, NODE } from 'mathflow';
+import { parse, NODE } from "mathflow";
 
 const ast = parse(tokens);
 // {
@@ -91,25 +95,27 @@ const ast = parse(tokens);
 ```
 
 **Node Types**:
+
 ```ts
 enum NODE {
-    PROGRAM,
-    BINARY,
-    UNARY,
-    NUMBER,
-    IDENTIFIER,
-    CALL,
-    ASSIGNMENT
+	PROGRAM,
+	BINARY,
+	UNARY,
+	NUMBER,
+	IDENTIFIER,
+	CALL,
+	ASSIGNMENT,
 }
 ```
 
 ### createSolutionStack
+
 `function createSolutionStack(): Solution`
 
 Creates a new solution stack for tracking evaluation steps.
 
 ```ts
-import { createSolutionStack } from 'mathflow';
+import { createSolutionStack } from "mathflow";
 
 const solution = createSolutionStack();
 
@@ -119,12 +125,13 @@ console.log(solution.steps); // [ ... ]
 ```
 
 ### evaluate
+
 `function evaluate(ctx: Context, node: Node, solution?: Solution): number`
 
 Evaluates an AST node in the given context.
 
 ```ts
-import { evaluate } from 'mathflow';
+import { evaluate } from "mathflow";
 
 const value = evaluate(ctx, ast.body[0], solution);
 
@@ -136,40 +143,40 @@ console.log(value); // Numeric result
 Here's a complete example showing how to use all components together:
 
 ```ts
-import { 
-    createContext,
-    tokenize,
-    parse,
-    evaluate,
-    createSolutionStack,
-    TOKEN,
-    NODE
-} from 'mathflow';
+import {
+	createContext,
+	tokenize,
+	parse,
+	evaluate,
+	createSolutionStack,
+	TOKEN,
+	NODE,
+} from "mathflow";
 
 // 1. Create context with variables
 const ctx = createContext({
-    variables: { x: 5 }
+	variables: { x: 5 },
 });
 
 // 2. Create solution tracker
 const solution = createSolutionStack();
 
 // 3. Process expression
-const expression = '2*x + sin(30)';
+const expression = "2*x + sin(30)";
 
 // 4. Tokenize
 const tokens = tokenize(ctx, expression);
-console.log('Tokens:', tokens);
+console.log("Tokens:", tokens);
 
 // 5. Parse
 const ast = parse(tokens);
-console.log('AST:', ast);
+console.log("AST:", ast);
 
 // 6. Evaluate
 const value = evaluate(ctx, ast.body[0], solution);
 
-console.log('Result:', value);
-console.log('Steps:', solution.steps);
+console.log("Result:", value);
+console.log("Steps:", solution.steps);
 ```
 
 ## Advanced Usage
@@ -177,109 +184,112 @@ console.log('Steps:', solution.steps);
 ### Custom Token Processing
 
 ```ts
-import { Token, TOKEN } from 'mathflow';
+import { Token, TOKEN } from "mathflow";
 
 function analyzeTokens(tokens: Token[]) {
-    return tokens.reduce((info, token) => {
-        info.types.add(token.type);
-        if (token.type === TOKEN.IDENTIFIER) {
-            info.variables.add(token.value);
-        }
-        return info;
-    }, {
-        types: new Set<TOKEN>(),
-        variables: new Set<string>()
-    });
+	return tokens.reduce(
+		(info, token) => {
+			info.types.add(token.type);
+			if (token.type === TOKEN.IDENTIFIER) {
+				info.variables.add(token.value);
+			}
+			return info;
+		},
+		{
+			types: new Set<TOKEN>(),
+			variables: new Set<string>(),
+		}
+	);
 }
 ```
 
 ### AST Transformation
 
 ```ts
-import { Node, NODE } from 'mathflow';
+import { Node, NODE } from "mathflow";
 
 // ...
 
 function simplifyAST(node: Node): Node {
-    // Handle numbers
-    if (node.type === NODE.NUMBER) {
-        return node;
-    }
+	// Handle numbers
+	if (node.type === NODE.NUMBER) {
+		return node;
+	}
 
-    // Simplify binary expressions
-    if (node.type === NODE.BINARY) {
-        const left = simplifyAST(node.left);
-        const right = simplifyAST(node.right);
+	// Simplify binary expressions
+	if (node.type === NODE.BINARY) {
+		const left = simplifyAST(node.left);
+		const right = simplifyAST(node.right);
 
-        // If both operands are numbers, compute the result
-        if (left.type === NODE.NUMBER && right.type === NODE.NUMBER) {
-            return {
-                type: NODE.NUMBER,
-                value: evaluate(ctx, {
-                    type: NODE.BINARY,
-                    operator: node.operator,
-                    left,
-                    right
-                })
-            };
-        }
+		// If both operands are numbers, compute the result
+		if (left.type === NODE.NUMBER && right.type === NODE.NUMBER) {
+			return {
+				type: NODE.NUMBER,
+				value: evaluate(ctx, {
+					type: NODE.BINARY,
+					operator: node.operator,
+					left,
+					right,
+				}),
+			};
+		}
 
-        return {
-            ...node,
-            left,
-            right
-        };
-    }
+		return {
+			...node,
+			left,
+			right,
+		};
+	}
 
-    return node;
+	return node;
 }
 ```
 
 ### Custom Evaluation Strategy
 
 ```ts
-import { Context, Node } from 'mathflow';
+import { Context, Node } from "mathflow";
 
 function evaluateWithTimeout(
-    ctx: Context,
-    node: Node,
-    timeout: number = 1000
+	ctx: Context,
+	node: Node,
+	timeout: number = 1000
 ): Promise<number> {
-    return new Promise((resolve, reject) => {
-        const timeoutId = setTimeout(() => {
-            reject(new Error('Evaluation timeout'));
-        }, timeout);
+	return new Promise((resolve, reject) => {
+		const timeoutId = setTimeout(() => {
+			reject(new Error("Evaluation timeout"));
+		}, timeout);
 
-        try {
-            const result = evaluate(ctx, node);
-            clearTimeout(timeoutId);
-            resolve(result);
-        } catch (error) {
-            clearTimeout(timeoutId);
-            reject(error);
-        }
-    });
+		try {
+			const result = evaluate(ctx, node);
+			clearTimeout(timeoutId);
+			resolve(result);
+		} catch (error) {
+			clearTimeout(timeoutId);
+			reject(error);
+		}
+	});
 }
 ```
 
 ## Best Practices
 
 1. **Token Management**
-   - Keep track of token positions for error reporting
+    - Keep track of token positions for error reporting
 
 2. **AST Operations**
-   - Implement AST visitors for complex transformations
-   - Cache AST for repeated evaluations
+    - Implement AST visitors for complex transformations
+    - Cache AST for repeated evaluations
 
 3. **Error Handling**
-   - Implement specific error types for each phase
+    - Implement specific error types for each phase
 
 ## Performance Considerations
 
 1. **Tokenization**
-   - Cache tokens for frequently used expressions
+    - Cache tokens for frequently used expressions
 
 2. **Evaluation**
-   - Cache computed values when possible
-   - Implement lazy evaluation for large expressions
-   - Use optimized math functions for common operations
+    - Cache computed values when possible
+    - Implement lazy evaluation for large expressions
+    - Use optimized math functions for common operations

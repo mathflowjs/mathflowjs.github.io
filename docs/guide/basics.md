@@ -5,6 +5,7 @@ This guide covers the fundamental syntax elements of MathFlow, a powerful mathem
 ## Overview
 
 MathFlow's syntax is designed to be:
+
 - **Intuitive**: Similar to standard mathematical notation
 - **Flexible**: Supports various writing styles
 - **Forgiving**: Handles different spacing and formatting
@@ -63,6 +64,7 @@ Infinity
 ### Operators
 
 #### Arithmetic Operators
+
 ```sh
 a + b    # Addition
 a - b    # Subtraction
@@ -73,6 +75,7 @@ a ^ b    # Exponentiation (power)
 ```
 
 #### Assignment Operator
+
 ```sh
 x = 5    # Assign 5 to variable x
 ```
@@ -92,6 +95,7 @@ Use parentheses for grouping and controlling evaluation order:
 ## Expression Structure
 
 ### Simple Expressions
+
 ```sh
 # Basic arithmetic
 2 + 3
@@ -107,6 +111,7 @@ sqrt(16)
 ```
 
 ### Compound Expressions
+
 ```sh
 # Multiple operations
 2 * x + y / 4
@@ -119,6 +124,7 @@ sin(sqrt(x))
 ```
 
 ### Multiple Lines
+
 ```sh
 # Sequential calculations
 x = 5
@@ -129,13 +135,14 @@ z = x + y
 point_distance(x1, y1, x2, y2)
 
 # Multi-line expressions
-(sin(x)^2 + 
+(sin(x)^2 +
  cos(x)^2)
 ```
 
 ## Implicit Multiplication
 
 MathFlow supports implicit multiplication between:
+
 - Numbers and variables: `2x` = `2 * x`
 - Numbers and functions: `2sin(x)` = `2 * sin(x)`
 - Variables: `xy` = `x * y`
@@ -187,35 +194,39 @@ sin 30          # Missing parentheses
 While MathFlow is flexible with syntax, these guidelines improve readability:
 
 1. **Use Spaces** around operators:
-   ```sh
-   x = 2 * y + 5  # Good
-   x=2*y+5        # Less readable
-   ```
+
+    ```sh
+    x = 2 * y + 5  # Good
+    x=2*y+5        # Less readable
+    ```
 
 2. **One Expression per Line**:
-   ```sh
-   # Good
-   x = 5
-   y = 2 * x
-   
-   # Less readable
-   x = 5; y = 2 * x
-   ```
+
+    ```sh
+    # Good
+    x = 5
+    y = 2 * x
+
+    # Less readable
+    x = 5; y = 2 * x
+    ```
 
 3. **Use Parentheses** for clarity:
-   ```sh
-   (a + b) * c    # Clear precedence
-   a + b * c      # Less clear
-   ```
+
+    ```sh
+    (a + b) * c    # Clear precedence
+    a + b * c      # Less clear
+    ```
 
 4. **Meaningful Variable Names**:
-   ```sh
-   radius = 5          # Clear purpose
-   r = 5              # Less clear
-   ```
+
+    ```sh
+    radius = 5          # Clear purpose
+    r = 5              # Less clear
+    ```
 
 5. **Add Comments** for complex expressions:
-   ```sh
-   # Calculate discriminant
-   b^2 - 4*a*c
-   ```
+    ```sh
+    # Calculate discriminant
+    b^2 - 4*a*c
+    ```

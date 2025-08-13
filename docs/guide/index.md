@@ -9,8 +9,9 @@ Welcome to the official documentation for [MathFlow](https://github.com/mathflow
 ## What MathFlow is not
 
 ::: warning
+
 - MathFlow is not a general-purpose programming language. It is focused on mathematical computation and basic scripting.
-:::
+  :::
 
 ## Main Objectives
 
@@ -25,5 +26,3 @@ MathFlow exposes an [API](../api/index.md) for evaluating code, solving equation
 3. Variable declarations are executed and stored in the scope.
 4. Each statement is tokenized, parsed into an AST, and interpreted.
 5. The result of the last statement is returned, along with the final scope.
-
-

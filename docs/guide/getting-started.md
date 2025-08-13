@@ -10,25 +10,30 @@ Before getting started, ensure you have:
 
 - [Node.js](https://nodejs.org) (version 20 or higher)
 - A package manager: [npm](https://npmjs.org), [pnpm](https://pnpm.io), [yarn](https://yarnpkg.com), or [bun](https://bun.sh)
-- TypeScript (optional, but recommended for better development experience)
+- [TypeScript](https://typescript.org) (optional, but recommended for better development experience)
 
 ## Installation
 
 Install MathFlow using your preferred package manager:
 
 :::code-group
+
 ```sh [npm]
 $ npm install mathflow
 ```
+
 ```sh [pnpm]
 $ pnpm add mathflow
 ```
+
 ```sh [yarn]
 $ yarn add mathflow
 ```
+
 ```sh [bun]
 $ bun add mathflow
 ```
+
 :::
 
 ## Quick Start
@@ -48,7 +53,7 @@ console.log(result.value); // 14
 
 ## Basic Usage Patterns
 
-This section uses the [Context API](../api/) which provides a simple interface for solving, rendering, and managing variables, functions or constants.
+This section uses the [Context API](../api/index.md) which provides a simple interface for solving, rendering, and managing variables, functions or constants.
 
 ### 1. Simple Calculations
 
@@ -99,10 +104,10 @@ console.log(ctx.solve('circleArea(5)').value);    // 78.54...
 
 ## Advanced Usage
 
-For more control over the evaluation process, MathFlow provides a [Procedural API](../api/procedural.md) along side the [Context API](../api/):
+For more control over the evaluation process, MathFlow provides a [Procedural API](../api/procedural.md) along side the [Context API](../api/index.md):
 
 ```ts:line-numbers
-import { 
+import {
     createContext,
     tokenize,
     parse,
@@ -132,15 +137,15 @@ Always wrap MathFlow operations in `try-catch` blocks when working with user inp
 
 ```ts
 try {
-    const result = ctx.solve(userInput);
-    displayResult(result.value);
+	const result = ctx.solve(userInput);
+	displayResult(result.value);
 } catch (error) {
-    if (error.name === 'MathFlowError') {
-        console.error(`${error.type}: ${error.message}`);
-        if (error.suggestion) {
-            console.info('Suggestion:', error.suggestion);
-        }
-    }
+	if (error.name === "MathFlowError") {
+		console.error(`${error.type}: ${error.message}`);
+		if (error.suggestion) {
+			console.info("Suggestion:", error.suggestion);
+		}
+	}
 }
 ```
 
@@ -150,6 +155,6 @@ try {
 - Explore [Built-in Functions](./builtin.md)
 - See practical [Examples](../examples/index.md)
 - Check the [API Reference](../api/index.md)
-- Try the online [Playground](/playground/)
+- Try the online [Playground](../playground/index.md)
 
 For more advanced features and comprehensive examples, continue through the documentation.

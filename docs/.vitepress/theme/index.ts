@@ -8,9 +8,9 @@ import PlayGround from "./components/PlayGround.vue";
 import "./assets/styles.css";
 
 export default {
-    extends: DefaultTheme,
-    enhanceApp(ctx) {
-        ctx.app.component('PlayGround', PlayGround);
-        // ctx.app.component('ProjectCards', ProjectCards);
-    }
+	extends: DefaultTheme,
+	enhanceApp(ctx) {
+		ctx.app.component("PlayGround", PlayGround);
+		// ctx.app.component('ProjectCards', ProjectCards);
+	},
 };

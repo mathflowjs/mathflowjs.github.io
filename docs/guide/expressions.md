@@ -79,6 +79,7 @@ sqrt(y)
 ### 2. Operators
 
 #### Arithmetic Operators
+
 - `+`: Addition
 - `-`: Subtraction or negation
 - `*`: Multiplication
@@ -114,6 +115,7 @@ sqrt(x^2 + y^2)
 ### 1. Operator Precedence
 
 Operators are evaluated in this order (highest to lowest):
+
 1. `( )` - Parentheses
 2. Function calls
 3. `^` - Exponentiation
@@ -132,22 +134,24 @@ sin(30) * 2     # Function call before multiplication
 ### 2. Expression Evaluation Rules
 
 1. **Left-to-Right Evaluation**
-   ```sh
-   a - b - c      # Evaluated as (a - b) - c
-   ```
+
+    ```sh
+    a - b - c      # Evaluated as (a - b) - c
+    ```
 
 2. **Function Precedence**
-   ```sh
-   sin(x) + cos(x)  # Functions evaluated before addition
-   2 * sin(x)       # Function evaluated before multiplication
-   ```
+
+    ```sh
+    sin(x) + cos(x)  # Functions evaluated before addition
+    2 * sin(x)       # Function evaluated before multiplication
+    ```
 
 3. **Implicit Multiplication**
-   ```sh
-   2x           # Same as 2 * x
-   2sin(x)      # Same as 2 * sin(x)
-   (x+1)(x-1)   # Same as (x+1) * (x-1)
-   ```
+    ```sh
+    2x           # Same as 2 * x
+    2sin(x)      # Same as 2 * sin(x)
+    (x+1)(x-1)   # Same as (x+1) * (x-1)
+    ```
 
 ## Expression Results
 
@@ -170,37 +174,41 @@ z = (x + y) / 2        # Returns 4
 ## Best Practices
 
 1. **Use Parentheses for Clarity**
-   ```sh
-   # Clear intention
-   (x + y) * z
-   
-   # Less clear
-   x + y * z
-   ```
+
+    ```sh
+    # Clear intention
+    (x + y) * z
+
+    # Less clear
+    x + y * z
+    ```
 
 2. **Break Down Complex Expressions**
-   ```sh
-   # Hard to read
-   result = (-b + sqrt(b^2 - 4*a*c)) / (2*a)
-   
-   # Better
-   discriminant = b^2 - 4*a*c
-   numerator = -b + sqrt(discriminant)
-   result = numerator / (2*a)
-   ```
+
+    ```sh
+    # Hard to read
+    result = (-b + sqrt(b^2 - 4*a*c)) / (2*a)
+
+    # Better
+    discriminant = b^2 - 4*a*c
+    numerator = -b + sqrt(discriminant)
+    result = numerator / (2*a)
+    ```
 
 3. **Use Meaningful Variables**
-   ```sh
-   # Good
-   area = length * width
-   
-   # Less clear
-   a = l * w
-   ```
+
+    ```sh
+    # Good
+    area = length * width
+
+    # Less clear
+    a = l * w
+    ```
 
 ## Common Patterns
 
 ### 1. Mathematical Formulas
+
 ```sh
 # Quadratic formula
 x1 = (-b + sqrt(b^2 - 4*a*c)) / (2*a)
@@ -214,6 +222,7 @@ c = sqrt(a^2 + b^2)
 ```
 
 ### 2. Scientific Calculations
+
 ```sh
 # Kinetic energy
 ke = (1/2) * mass * velocity^2
