@@ -1,8 +1,19 @@
-# Playground
+---
+layout: page
+sidebar: false
+---
 
-<PlayGround />
+<div style="padding: 1rem">
 
-:::warning ALERT
-In case you get a wrong answer; Generate a link using the `Share` button and copy it. Open an issue on GitHub describing the error. Add the copied link to the issue description for a reproduction.
-=> [Open new issue](https://github.com/henryhale/xterminal/issues).
-:::
+<ClientOnly>
+    <Playground />
+</ClientOnly>
+
+<p style="text-align:center;margin-bottom:1rem">
+    Wrong answer or bug?
+    <a href="https://github.com/mathflowjs/mathflow/issues">
+        <u>Open an issue on GitHub</u>
+    </a>
+</p>
+
+</div>
