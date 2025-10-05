@@ -11,7 +11,7 @@ This provides a simple interface for solving, rendering, and managing variables/
 Use `createContext` to manage isolated or persistent variable scopes:
 
 ```ts
-import { createContext } from "mathflow";
+import { createContext } from "@mathflowjs/mathflow";
 
 const ctx = createContext({
 	// ...

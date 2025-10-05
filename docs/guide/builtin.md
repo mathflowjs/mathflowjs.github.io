@@ -50,7 +50,7 @@ MathFlow comes with a rich set of built-in constants and functions for mathemati
 ## Examples
 
 ```js:line-numbers
-import { createContext } from 'mathflow';
+import { createContext } from '@mathflowjs/mathflow';
 
 const ctx = createContext();
 

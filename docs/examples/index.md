@@ -7,7 +7,7 @@ This section provides practical examples of using MathFlow in different scenario
 ### Simple Calculations
 
 ```ts:line-numbers
-import { createContext } from 'mathflow';
+import { createContext } from '@mathflowjs/mathflow';
 
 const ctx = createContext();
 
@@ -23,7 +23,7 @@ console.log(ctx.solve('sqrt(16)')); // 4
 ### Working with Variables
 
 ```ts:line-numbers
-import { createContext } from 'mathflow';
+import { createContext } from '@mathflowjs/mathflow';
 
 const ctx = createContext({
     variables: {
@@ -46,7 +46,7 @@ console.log(ctx.solve('x + y + z')); // 18
 ### Solving Equations in Steps
 
 ```ts:line-numbers
-import { createContext } from 'mathflow';
+import { createContext } from '@mathflowjs/mathflow';
 
 const steps = ctx.solveBatch(`
     x = 5
@@ -65,7 +65,7 @@ steps.forEach(step => {
 ### Working with Functions
 
 ```ts:line-numbers
-import { createContext } from 'mathflow';
+import { createContext } from '@mathflowjs/mathflow';
 
 const ctx = createContext({
     functions: {
@@ -83,7 +83,7 @@ console.log(ctx.solve('circleArea(5)'));    // 78.54...
 ### Trigonometry
 
 ```ts:line-numbers
-import { createContext } from 'mathflow';
+import { createContext } from '@mathflowjs/mathflow';
 
 const ctx = createContext({
     preferences: {
@@ -103,7 +103,7 @@ console.log(ctx.solve('sin(x)^2 + cos(x)^2')); // 1
 ### LaTeX Output
 
 ```ts:line-numbers
-import { createContext } from 'mathflow';
+import { createContext } from '@mathflowjs/mathflow';
 
 const ctx = createContext();
 
@@ -121,7 +121,7 @@ console.log(latex);
 ### HTML Rendering
 
 ```ts:line-numbers
-import { createContext } from 'mathflow';
+import { createContext } from '@mathflowjs/mathflow';
 
 const ctx = createContext();
 
@@ -140,7 +140,7 @@ document.getElementById('math').innerHTML = html;
 ### Financial Calculations
 
 ```ts:line-numbers
-import { createContext } from 'mathflow';
+import { createContext } from '@mathflowjs/mathflow';
 
 const ctx = createContext({
     functions: {
@@ -164,7 +164,7 @@ console.log(ctx.solve('PMT(200000, 0.035, 360)')); // 898.09
 ### Physics Equations
 
 ```ts:line-numbers
-import { createContext } from 'mathflow';
+import { createContext } from '@mathflowjs/mathflow';
 
 const ctx = createContext({
     constants: {
@@ -189,7 +189,7 @@ console.log(ctx.solve('period(2)')); // 2.84s (2m length)
 ### Geometry
 
 ```ts:line-numbers
-import { createContext } from 'mathflow';
+import { createContext } from '@mathflowjs/mathflow';
 
 const ctx = createContext({
     functions: {
@@ -217,7 +217,7 @@ console.log(ctx.solve('polygonArea(6, 2)')); // 10.39
 ### Graceful Error Handling
 
 ```ts:line-numbers
-import { createContext } from 'mathflow';
+import { createContext } from '@mathflowjs/mathflow';
 
 function safeSolve(expr: string) {
     try {
@@ -244,7 +244,7 @@ console.log(safeSolve('undefined_var')); // { success: false, error: "RuntimeErr
 ### Input Validation
 
 ```ts:line-numbers
-import { createContext } from 'mathflow';
+import { createContext } from '@mathflowjs/mathflow';
 
 function validateExpression(expr: string) {
     const ctx = createContext();

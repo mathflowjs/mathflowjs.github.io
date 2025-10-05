@@ -8,9 +8,9 @@ importers:
 
   .:
     dependencies:
-      mathflow:
-        specifier: ^0.3.0
-        version: 0.3.0
+      '@mathflowjs/mathflow':
+        specifier: ^1.0.0
+        version: 1.0.0
     devDependencies:
       prettier:
         specifier: ^3.6.2
@@ -283,6 +283,9 @@ packages:
 
   '@jridgewell/sourcemap-codec@1.5.0':
     resolution: {integrity: sha512-gv3ZRaISU3fjPAgNsriBRqGWQL6quFx04YMPW/zD8XMLsU32mhCCbfbO6KZFLjvYpCZ8zyDEgqsgf+PwPaM7GQ==}
+
+  '@mathflowjs/mathflow@1.0.0':
+    resolution: {integrity: sha512-0ccKaGbqRkOT6ts3YkyYaW1lGnkL0Og5n0JZCRDRxsvsBCdbtw+LrWegwGjKtLbc7kKzbqSVybU+3W/M4dyC8Q==}
 
   '@rollup/rollup-android-arm-eabi@4.22.4':
     resolution: {integrity: sha512-Fxamp4aEZnfPOcGA8KSNEohV8hX7zVHOemC8jVBoBUHu5zpJK/Eu3uJwt6BMgy9fkvzxDaurgj96F/NiLukF2w==}
@@ -587,9 +590,6 @@ packages:
 
   mark.js@8.11.1:
     resolution: {integrity: sha512-1I+1qpDt4idfgLQG+BNWmrqku+7/2bi5nLf4YwF8y8zXvmfiTBY3PV3ZibfrjBueCByROpuBjLLFCajqkgYoLQ==}
-
-  mathflow@0.3.0:
-    resolution: {integrity: sha512-M/2dNJwL9MzskEPyzjM31y4BGmyQbveXZfTYpZuu94XNf53ELBzSPs6XRCLBZDPguceGg35gwLLXSgQzp57vow==}
 
   mdast-util-to-hast@13.2.0:
     resolution: {integrity: sha512-QGYKEuUsYT9ykKBCMOEDLsU5JRObWQusAolFMeko/tYPufNkRffBAQjIE+99jbA87xv6FgmjLtwjh9wBWajwAA==}
@@ -994,6 +994,8 @@ snapshots:
 
   '@jridgewell/sourcemap-codec@1.5.0': {}
 
+  '@mathflowjs/mathflow@1.0.0': {}
+
   '@rollup/rollup-android-arm-eabi@4.22.4':
     optional: true
 
@@ -1318,8 +1320,6 @@ snapshots:
       '@jridgewell/sourcemap-codec': 1.5.0
 
   mark.js@8.11.1: {}
-
-  mathflow@0.3.0: {}
 
   mdast-util-to-hast@13.2.0:
     dependencies:

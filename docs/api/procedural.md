@@ -29,7 +29,7 @@ MathFlow's processing pipeline consists of four main stages:
 Converts a string input into a sequence of tokens.
 
 ```ts
-import { createContext, tokenize, TOKEN } from "mathflow";
+import { createContext, tokenize, TOKEN } from "@mathflowjs/mathflow";
 
 const ctx = createContext();
 
@@ -75,7 +75,7 @@ type Token = {
 Converts a sequence of tokens into an Abstract Syntax Tree (AST).
 
 ```ts
-import { parse, NODE } from "mathflow";
+import { parse, NODE } from "@mathflowjs/mathflow";
 
 const ast = parse(tokens);
 // {
@@ -115,7 +115,7 @@ enum NODE {
 Creates a new solution stack for tracking evaluation steps.
 
 ```ts
-import { createSolutionStack } from "mathflow";
+import { createSolutionStack } from "@mathflowjs/mathflow";
 
 const solution = createSolutionStack();
 
@@ -131,7 +131,7 @@ console.log(solution.steps); // [ ... ]
 Evaluates an AST node in the given context.
 
 ```ts
-import { evaluate } from "mathflow";
+import { evaluate } from "@mathflowjs/mathflow";
 
 const value = evaluate(ctx, ast.body[0], solution);
 
@@ -151,7 +151,7 @@ import {
 	createSolutionStack,
 	TOKEN,
 	NODE,
-} from "mathflow";
+} from "@mathflowjs/mathflow";
 
 // 1. Create context with variables
 const ctx = createContext({
@@ -184,7 +184,7 @@ console.log("Steps:", solution.steps);
 ### Custom Token Processing
 
 ```ts
-import { Token, TOKEN } from "mathflow";
+import { Token, TOKEN } from "@mathflowjs/mathflow";
 
 function analyzeTokens(tokens: Token[]) {
 	return tokens.reduce(
@@ -206,7 +206,7 @@ function analyzeTokens(tokens: Token[]) {
 ### AST Transformation
 
 ```ts
-import { Node, NODE } from "mathflow";
+import { Node, NODE } from "@mathflowjs/mathflow";
 
 // ...
 
@@ -248,7 +248,7 @@ function simplifyAST(node: Node): Node {
 ### Custom Evaluation Strategy
 
 ```ts
-import { Context, Node } from "mathflow";
+import { Context, Node } from "@mathflowjs/mathflow";
 
 function evaluateWithTimeout(
 	ctx: Context,
