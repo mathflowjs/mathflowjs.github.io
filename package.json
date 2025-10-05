@@ -20,6 +20,6 @@
     "vitepress": "^1.6.4"
   },
   "dependencies": {
-    "mathflow": "^0.3.0"
+    "@mathflowjs/mathflow": "^1.0.0"
   }
 }

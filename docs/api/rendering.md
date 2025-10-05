@@ -11,7 +11,7 @@ You can render mathematical expressions as HTML with customizable styling and th
 You can render MathFlow code as HTML using the context API (recommended):
 
 ```ts
-import { createContext } from "mathflow";
+import { createContext } from "@mathflowjs/mathflow";
 
 const ctx = createContext();
 const html = ctx.renderAsHTML("sin(x) + 2^3", {
@@ -25,7 +25,7 @@ const html = ctx.renderAsHTML("sin(x) + 2^3", {
 For advanced usage, tokenize an expression and render manually:
 
 ```ts
-import { createContext, tokenize, renderTokensAsHTML } from "mathflow";
+import { createContext, tokenize, renderTokensAsHTML } from "@mathflowjs/mathflow";
 
 const ctx = createContext();
 const tokens = tokenize(ctx, "sin(x) + 2^3");
@@ -61,7 +61,7 @@ You can convert mathematical expressions to LaTeX format, suitable for use with 
 You can render MathFlow code as LaTeX using the context API (recommended):
 
 ```ts
-import { createContext } from "mathflow";
+import { createContext } from "@mathflowjs/mathflow";
 
 const ctx = createContext();
 
@@ -74,7 +74,7 @@ const latex = ctx.renderAsLaTeX("sqrt(4) + pi", { mode: "inline" });
 For advanced usage, tokenize an expression and render manually:
 
 ```ts
-import { createContext, tokenize, renderTokensAsLaTeX } from "mathflow";
+import { createContext, tokenize, renderTokensAsLaTeX } from "@mathflowjs/mathflow";
 
 const ctx = createContext();
 

@@ -19,19 +19,19 @@ Install MathFlow using your preferred package manager:
 :::code-group
 
 ```sh [npm]
-$ npm install mathflow
+$ npm install @mathflowjs/mathflow
 ```
 
 ```sh [pnpm]
-$ pnpm add mathflow
+$ pnpm add @mathflowjs/mathflow
 ```
 
 ```sh [yarn]
-$ yarn add mathflow
+$ yarn add @mathflowjs/mathflow
 ```
 
 ```sh [bun]
-$ bun add mathflow
+$ bun add @mathflowjs/mathflow
 ```
 
 :::
@@ -41,7 +41,7 @@ $ bun add mathflow
 Here's a simple example to get you started:
 
 ```ts:line-numbers
-import { createContext } from 'mathflow';
+import { createContext } from '@mathflowjs/mathflow';
 
 // Create a new context
 const ctx = createContext();
@@ -58,7 +58,7 @@ This section uses the [Context API](../api/index.md) which provides a simple int
 ### 1. Simple Calculations
 
 ```ts:line-numbers
-import { createContext } from 'mathflow';
+import { createContext } from '@mathflowjs/mathflow';
 
 const ctx = createContext();
 
@@ -71,7 +71,7 @@ console.log(ctx.solve('2^3 + sqrt(16)').value); // 12
 ### 2. Working with Variables
 
 ```ts:line-numbers
-import { createContext } from 'mathflow';
+import { createContext } from '@mathflowjs/mathflow';
 
 const ctx = createContext();
 
@@ -87,7 +87,7 @@ console.log(ctx.solve('x^2 + y^2').value); // 34
 ### 3. Custom Functions
 
 ```ts:line-numbers
-import { createContext } from 'mathflow';
+import { createContext } from '@mathflowjs/mathflow';
 
 const ctx = createContext({
     functions: {
@@ -113,7 +113,7 @@ import {
     parse,
     evaluate,
     createSolutionStack
-} from 'mathflow';
+} from '@mathflowjs/mathflow';
 
 const ctx = createContext();
 const solution = createSolutionStack();

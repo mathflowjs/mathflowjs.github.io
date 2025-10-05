@@ -4,8 +4,8 @@ layout: home
 
 hero:
     name: MathFlow
-    text: A Robust Mathematical Expression Parser for JavaScript
-    tagline: Parse, evaluate and work with mathematical expressions with ease
+    text: A Robust Mathematical Expression Parser
+    tagline: Parse, evaluate and work with mathematical expressions with ease. Step-by-step solutions included.
     image:
         src: /logo.svg
         alt: MathFlow Logo
