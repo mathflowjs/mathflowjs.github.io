@@ -64,7 +64,7 @@ export default defineConfig({
 				items: [
 					{
 						text: "Changelog",
-						link: "https://github.com/mathflowjs/mathflow/blob/main/CHANGELOG.md",
+						link: "https://github.com/mathflowjs/mathflow/blob/master/CHANGELOG.md",
 					},
 					{
 						text: "Contributing",
@@ -118,7 +118,7 @@ export default defineConfig({
 		editLink: {
 			text: "Edit this page on GitHub",
 			pattern:
-				"https://github.com/mathflowjs/mathflowjs.github.io/edit/main/docs/:path",
+				"https://github.com/mathflowjs/mathflowjs.github.io/edit/master/docs/:path",
 		},
 
 		footer: {
