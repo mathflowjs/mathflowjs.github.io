@@ -12,9 +12,10 @@ MathFlow comes with a rich set of built-in constants and functions for mathemati
 ### Arithmetic & Numbers
 
 - `add(x, y, ...)` : Sum of arguments
-- `sub(x, y)` : Subtraction
+- `sub(x, y)` : Subtraction x - y
 - `mul(x, y, ...)` : Product of arguments
-- `div(x, y)` : Division
+- `div(x, y)` : Division x / y
+- `mod(x, y)` : Modulo x % y
 - `abs(x)` : Absolute value
 - `ceil(x)` : Ceiling
 - `floor(x)` : Floor
@@ -36,13 +37,13 @@ MathFlow comes with a rich set of built-in constants and functions for mathemati
 
 > Angle mode can be _degrees_ or _radians_ - See [Preferences](../api/index.md#angles) for details.
 
+- `deg(x)` : Convert radians to degrees
+- `rad(x)` : Convert degrees to radians
 - `sin(x)`, `cos(x)`, `tan(x)` : Sine, cosine, tangent
 - `asin(x)`, `acos(x)`, `atan(x)` : Inverse trigonometric functions
 - `csc(x)`, `sec(x)`, `cot(x)` : Cosecant, secant, cotangent
 - `sinh(x)`, `cosh(x)`, `tanh(x)` : Hyperbolic functions
 - `asinh(x)`, `acosh(x)`, `atanh(x)` : Inverse hyperbolic functions
-- `deg(x)` : Convert radians to degrees
-- `rad(x)` : Convert degrees to radians
 - `hypot(x, y)` : sqrt(x² + y²)
 - `versin(x)` : 1 - cos(x)
 - `coversin(x)` : (1 - cos(x)) / 2
