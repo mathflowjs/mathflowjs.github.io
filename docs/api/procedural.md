@@ -59,7 +59,7 @@ enum TOKEN {
 	EOF,
 }
 
-type Token = {
+type IToken = {
 	type: TOKEN;
 	value: string;
 	column: number;
@@ -110,7 +110,7 @@ enum NODE {
 
 ### createSolutionStack
 
-`function createSolutionStack(): Solution`
+`function createSolutionStack(): ISolution`
 
 Creates a new solution stack for tracking evaluation steps.
 
@@ -126,7 +126,7 @@ console.log(solution.steps); // [ ... ]
 
 ### evaluate
 
-`function evaluate(ctx: Context, node: Node, solution?: Solution): number`
+`function evaluate(ctx: IContext, node: INode, solution?: ISolution): number`
 
 Evaluates an AST node in the given context.
 
@@ -184,9 +184,9 @@ console.log("Steps:", solution.steps);
 ### Custom Token Processing
 
 ```ts
-import { Token, TOKEN } from "@mathflowjs/mathflow";
+import { IToken, TOKEN } from "@mathflowjs/mathflow";
 
-function analyzeTokens(tokens: Token[]) {
+function analyzeTokens(tokens: IToken[]) {
 	return tokens.reduce(
 		(info, token) => {
 			info.types.add(token.type);
@@ -206,11 +206,11 @@ function analyzeTokens(tokens: Token[]) {
 ### AST Transformation
 
 ```ts
-import { Node, NODE } from "@mathflowjs/mathflow";
+import { INode, NODE } from "@mathflowjs/mathflow";
 
 // ...
 
-function simplifyAST(node: Node): Node {
+function simplifyAST(node: INode): INode {
 	// Handle numbers
 	if (node.type === NODE.NUMBER) {
 		return node;
@@ -248,11 +248,11 @@ function simplifyAST(node: Node): Node {
 ### Custom Evaluation Strategy
 
 ```ts
-import { Context, Node } from "@mathflowjs/mathflow";
+import { IContext, INode } from "@mathflowjs/mathflow";
 
 function evaluateWithTimeout(
-	ctx: Context,
-	node: Node,
+	ctx: IContext,
+	node: INode,
 	timeout: number = 1000
 ): Promise<number> {
 	return new Promise((resolve, reject) => {

@@ -99,11 +99,10 @@ interface MathFlowError {
 - `suggestion`: Optional hint for fixing the error
 - `toString()`: Formatted error message with suggestion if available
 
-## Best Practices
+## Safe Functions
 
-### 1. Use Try-Catch Blocks
-
-Always wrap MathFlow operations in try-catch blocks when handling user input:
+By default, errors are thrown at any stage of the evaluation. 
+Below is an example of good error handling where MathFlow operations are wrapped in `try-catch` blocks;
 
 ```ts
 try {
@@ -118,7 +117,36 @@ try {
 }
 ```
 
-### 2. Error Type Checking
+A similar paradigm is used for safe functions listed below. 
+No errors are thrown. 
+The result of the operation is an object with either a `data` key - (result of the operation) or `error` key (error thrown during the operation).
+
+```ts
+export type ISafeResult<T = unknown> =
+	| {
+		data: T;
+		error: undefined;
+	}
+	| {
+		data: undefined;
+		error: IError;
+	};
+
+declare function safeTokenize(ctx: IContext, code: string): ISafeResult
+
+declare function safeParse(tokens: IToken[]): ISafeResult
+
+declare function safeEvaluate(ctx: IContext, node: INode, solution: ISolution): ISafeResult
+
+declare function safeSolve(ctx: IContext, code: string): ISafeResult
+
+declare function safeSolveBatch(ctx: IContext, code: string): ISafeResult
+```
+
+## Best Practices
+
+
+### 1. Error Type Checking
 
 Check error types to provide appropriate feedback:
 
@@ -138,7 +166,7 @@ function handleMathFlowError(error) {
 }
 ```
 
-### 3. User Feedback
+### 2. User Feedback
 
 Use error suggestions to help users fix issues:
 
@@ -150,7 +178,7 @@ function displayError(error) {
 }
 ```
 
-### 4. Variable Validation
+### 3. Variable Validation
 
 Check variables before evaluation to prevent runtime errors:
 
