@@ -25,7 +25,11 @@ const html = ctx.renderAsHTML("sin(x) + 2^3", {
 For advanced usage, tokenize an expression and render manually:
 
 ```ts
-import { createContext, tokenize, renderTokensAsHTML } from "@mathflowjs/mathflow";
+import {
+	createContext,
+	tokenize,
+	renderTokensAsHTML,
+} from "@mathflowjs/mathflow";
 
 const ctx = createContext();
 const tokens = tokenize(ctx, "sin(x) + 2^3");
@@ -74,7 +78,11 @@ const latex = ctx.renderAsLaTeX("sqrt(4) + pi", { mode: "inline" });
 For advanced usage, tokenize an expression and render manually:
 
 ```ts
-import { createContext, tokenize, renderTokensAsLaTeX } from "@mathflowjs/mathflow";
+import {
+	createContext,
+	tokenize,
+	renderTokensAsLaTeX,
+} from "@mathflowjs/mathflow";
 
 const ctx = createContext();
 
