@@ -60,7 +60,7 @@ export default defineConfig({
 			{ text: "Examples", link: "/examples/" },
 			{ text: "Playground", link: "/playground/" },
 			{
-				text: "v1.0.0",
+				text: "v2.0.0",
 				items: [
 					{
 						text: "Changelog",
