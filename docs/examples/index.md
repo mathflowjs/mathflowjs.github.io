@@ -128,11 +128,11 @@ const ctx = createContext();
 const expr = 'sin^2(x) + cos^2(x) = 1';
 
 // Get interactive HTML with dark theme
-const html = ctx.renderAsHTML(expr, {
+const {html, css} = ctx.renderAsHTML(expr, {
     colorScheme: 'dark'
 });
 
-document.getElementById('math').innerHTML = html;
+document.getElementById('math').innerHTML = `<style>${css}</style>${html}`;
 ```
 
 ## Real-World Applications

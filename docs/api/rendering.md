@@ -14,7 +14,7 @@ You can render MathFlow code as HTML using the context API (recommended):
 import { createContext } from "@mathflowjs/mathflow";
 
 const ctx = createContext();
-const html = ctx.renderAsHTML("sin(x) + 2^3", {
+const { html, css } = ctx.renderAsHTML("sin(x) + 2^3", {
 	/* options */
 });
 // html: '<span>sin(x) + 2<sup>3</sup></span>'
@@ -33,7 +33,7 @@ import {
 
 const ctx = createContext();
 const tokens = tokenize(ctx, "sin(x) + 2^3");
-const html = renderTokensAsHTML(tokens, {
+const { html, css } = renderTokensAsHTML(tokens, {
 	/* options */
 });
 ```
