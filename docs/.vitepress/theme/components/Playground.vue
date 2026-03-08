@@ -67,6 +67,7 @@ function evaluateExpression(code = "") {
 			const steps = r.solution.steps;
 			steps.pop();
 			if (steps.length < 2) continue;
+			steps.push(r.value);
 			solution += steps.join("\n") + "\n\n";
 		}
 		const renderedSolution = renderTokensAsHTML(tokenize(ctx, solution), {

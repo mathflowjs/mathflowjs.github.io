@@ -21,6 +21,11 @@ const tabs = [
 const state = reactive({
 	active: "result",
 });
+
+function autoSelectContent(e) {
+	e.target.focus();
+	e.target.select();
+}
 </script>
 
 <template>
@@ -52,19 +57,20 @@ const state = reactive({
 						</div>
 						<textarea
 							v-else-if="props.result"
-							rows="15"
-							style="width: 100%; background: transparent"
-							>{{
-								JSON.stringify(props.result, null, 4)
-							}}</textarea
-						>
+							:value="JSON.stringify(props.result, null, 4)"
+							rows="10"
+							readonly
+						></textarea>
 						<span v-else>Ready to evaluate...</span>
 					</div>
 				</div>
 
 				<div class="output-group">
 					<h3>Solution</h3>
-					<div class="output-content" v-html="props.solution"></div>
+					<div
+						class="output-content"
+						v-html="props.solution?.html"
+					></div>
 				</div>
 
 				<div class="output-group">
@@ -100,15 +106,39 @@ const state = reactive({
 			<div v-show="state.active === 'html'">
 				<div class="output-group">
 					<h3>HTML Render</h3>
-					<div v-html="props.html"></div>
+					<div v-html="props.html?.html"></div>
 				</div>
 				<div class="output-group">
-					<h3>HTML Code</h3>
-					<div class="output-content">
-						<textarea readonly rows="15" style="width: 100%">{{
-							props.html
-						}}</textarea>
-					</div>
+					<details>
+						<summary>
+							<h3>HTML</h3>
+						</summary>
+						<div class="output-content">
+							<textarea
+								:value="props.html?.html"
+								@click="autoSelectContent"
+								readonly
+								rows="10"
+								placeholder="No code. Try another expression."
+							></textarea>
+						</div>
+					</details>
+				</div>
+				<div class="output-group">
+					<details>
+						<summary>
+							<h3>CSS</h3>
+						</summary>
+						<div class="output-content">
+							<textarea
+								:value="props.html?.css"
+								@click="autoSelectContent"
+								readonly
+								rows="10"
+								placeholder="No code. Try another expression."
+							></textarea>
+						</div>
+					</details>
 				</div>
 			</div>
 
@@ -117,9 +147,13 @@ const state = reactive({
 				<div class="output-group">
 					<h3>LaTeX Output</h3>
 					<div class="output-content">
-						<textarea readonly rows="15" style="width: 100%">{{
-							props.latex
-						}}</textarea>
+						<textarea
+							:value="props.latex"
+							@click="autoSelectContent"
+							readonly
+							rows="15"
+							placeholder="No code. Try another expression."
+						></textarea>
 					</div>
 				</div>
 			</div>
@@ -167,6 +201,8 @@ const state = reactive({
 }
 
 .output-group h3 {
+	display: inline-block;
+	cursor: pointer;
 	font-size: 14px;
 	font-weight: 600;
 	color: var(--vp-c-text-2);
@@ -185,6 +221,11 @@ const state = reactive({
 	line-height: 1.6;
 	overflow-x: auto;
 	min-height: 60px;
+}
+
+textarea {
+	width: 100%;
+	background-color: transparent;
 }
 
 .output-content.result {
