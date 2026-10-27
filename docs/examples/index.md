@@ -12,12 +12,12 @@ import { createContext } from '@mathflowjs/mathflow';
 const ctx = createContext();
 
 // Basic arithmetic
-console.log(ctx.solve('2 + 3 * 4'));  // 14
-console.log(ctx.solve('(2 + 3) * 4')); // 20
+console.log(ctx.solve('2 + 3 * 4').value);  // 14
+console.log(ctx.solve('(2 + 3) * 4').value); // 20
 
 // Powers and roots
-console.log(ctx.solve('2^3'));     // 8
-console.log(ctx.solve('sqrt(16)')); // 4
+console.log(ctx.solve('2^3').value);     // 8
+console.log(ctx.solve('sqrt(16)').value); // 4
 ```
 
 ### Working with Variables
@@ -33,12 +33,12 @@ const ctx = createContext({
 });
 
 // Using variables in expressions
-console.log(ctx.solve('2*x + y'));   // 13
-console.log(ctx.solve('x^2 + y^2')); // 34
+console.log(ctx.solve('2*x + y').value);   // 13
+console.log(ctx.solve('x^2 + y^2').value); // 34
 
 // Dynamic variable updates
 ctx.variables.set('z', 10);
-console.log(ctx.solve('x + y + z')); // 18
+console.log(ctx.solve('x + y + z').value); // 18
 ```
 
 ## Advanced Examples
@@ -76,8 +76,8 @@ const ctx = createContext({
     }
 });
 
-console.log(ctx.solve('avg(1, 2, 3, 4)')); // 2.5
-console.log(ctx.solve('circleArea(5)'));    // 78.54...
+console.log(ctx.solve('avg(1, 2, 3, 4)').value); // 2.5
+console.log(ctx.solve('circleArea(5)').value);    // 78.54...
 ```
 
 ### Trigonometry
@@ -92,12 +92,12 @@ const ctx = createContext({
 });
 
 // Basic trigonometry
-console.log(ctx.solve('sin(30)'));  // 0.5
-console.log(ctx.solve('cos(60)'));  // 0.5
-console.log(ctx.solve('tan(45)'));  // 1
+console.log(ctx.solve('sin(30)').value);  // 0.5
+console.log(ctx.solve('cos(60)').value);  // 0.5
+console.log(ctx.solve('tan(45)').value);  // 1
 
 // Complex expressions
-console.log(ctx.solve('sin(x)^2 + cos(x)^2')); // 1
+console.log(ctx.solve('sin(x)^2 + cos(x)^2').value); // 1
 ```
 
 ### LaTeX Output
@@ -155,10 +155,10 @@ const ctx = createContext({
 });
 
 // Calculate future value of $1000 at 5% for 3 years
-console.log(ctx.solve('FV(1000, 0.05, 3)')); // 1157.63
+console.log(ctx.solve('FV(1000, 0.05, 3)').value); // 1157.63
 
 // Calculate monthly payment for $200000 loan at 3.5% for 30 years
-console.log(ctx.solve('PMT(200000, 0.035, 360)')); // 898.09
+console.log(ctx.solve('PMT(200000, 0.035, 360)').value); // 898.09
 ```
 
 ### Physics Equations
@@ -180,10 +180,10 @@ const ctx = createContext({
 });
 
 // Calculate kinetic energy
-console.log(ctx.solve('KE(2, 5)')); // 25 (2kg mass at 5m/s)
+console.log(ctx.solve('KE(2, 5)').value); // 25 (2kg mass at 5m/s)
 
 // Calculate pendulum period
-console.log(ctx.solve('period(2)')); // 2.84s (2m length)
+console.log(ctx.solve('period(2)').value); // 2.84s (2m length)
 ```
 
 ### Geometry
@@ -206,10 +206,10 @@ const ctx = createContext({
 });
 
 // Area of triangle with sides 3, 4, 5
-console.log(ctx.solve('triangleArea(3, 4, 5)')); // 6
+console.log(ctx.solve('triangleArea(3, 4, 5)').value); // 6
 
 // Area of regular hexagon with radius 2
-console.log(ctx.solve('polygonArea(6, 2)')); // 10.39
+console.log(ctx.solve('polygonArea(6, 2)').value); // 10.39
 ```
 
 ## Error Handling Examples
@@ -224,7 +224,7 @@ function safeSolve(expr: string) {
         const ctx = createContext();
         return {
             success: true,
-            value: ctx.solve(expr)
+            value: ctx.solve(expr).value
         };
     } catch (error) {
         return {
