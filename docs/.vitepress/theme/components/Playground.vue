@@ -3,12 +3,46 @@ import { computed, ref } from "vue";
 import { useData } from "vitepress";
 import { createContext, tokenize } from "@mathflowjs/mathflow";
 
+// one <optgroup> per group, in this order. MathFlow rounds every step and drops
+// terms after a space ("pi r^2" = pi), so check new examples give exact answers.
 const examples = {
-	Arithmetic: "2 + 3 * 4\n(2 + 3) * 4\n2^10 - 1",
-	Variables:
-		"# variables carry over to later lines\nx = 5\ny = x^2 + 1\n2x + 3(y - 1)",
-	Functions: "sqrt(16) + abs(-5)\nhypot(3, 4)\nlog(100, 10) + ln(e)",
-	Trigonometry: "sin(pi / 2)\ncos(pi)\ntan(pi / 4)",
+	Basics: {
+		Arithmetic: "2 + 3 * 4\n(2 + 3) * 4\n10 / 4\n2^10",
+		"Negative numbers": "-5 + 3\n-(2 + 3)\n2 * -3\n(-2)^2",
+		Decimals: "0.1 + 0.2\n1.5 * 4\n22 / 7",
+		"Implicit multiplication": "2(3 + 4)\n(1 + 2)(3 + 4)\n3sqrt(16)",
+		Comments:
+			"# a comment takes up a whole line\n2 + 2 # or the end of one",
+	},
+	Functions: {
+		"Roots & powers": "sqrt(16)\ncbrt(27)\nroot(32, 5)\npow(2, 8)",
+		Rounding: "floor(3.7)\nceil(3.2)\ntrunc(-3.7)\nabs(-5)",
+		Logarithms: "log(100, 10)\nlog10(1000)\nlog2(8)\nln(e)\nexp(1)",
+		Trigonometry: "sin(pi / 2)\ncos(pi)\nsin(pi / 6)\nasin(1)",
+		"Multiple arguments":
+			"add(1, 2, 3, 4)\nmul(2, 3, 4)\nmod(17, 5)\nhypot(3, 4)",
+	},
+	Variables: {
+		Assignment:
+			"# variables carry over to later lines\nx = 5\ny = x^2 + 1\n2x + 3(y - 1)",
+		Reassignment: "n = 1\nn = n + 1\nn = n * 10",
+		"Longer names":
+			"speed1 = 30\nspeed2 = 50\naverage = (speed1 + speed2) / 2",
+	},
+	Programs: {
+		"Pythagorean theorem":
+			"# hypotenuse of a right triangle\na = 3\nb = 4\nc = sqrt(a^2 + b^2)",
+		"Quadratic formula":
+			"# roots of x^2 - 3x + 2 = 0\na = 1\nb = -3\nc = 2\nd = b^2 - 4 * a * c\nx1 = (-b + sqrt(d)) / (2a)\nx2 = (-b - sqrt(d)) / (2a)",
+		"Compound interest":
+			"# 1000 at 10% a year for 3 years\nprincipal = 1000\nrate = 0.1\nyears = 3\nprincipal * (1 + rate)^years",
+		"Average score":
+			"math = 82\nscience = 91\nart = 77\n(math + science + art) / 3",
+		Temperature:
+			"# Celsius to Fahrenheit\ncelsius = 100\nfahrenheit = celsius * 9 / 5 + 32",
+		Projectile:
+			"# ball thrown straight up at 20 m/s\nv = 20\ng = 9.81\nheight = v^2 / (2g)\ntime = v / g",
+	},
 };
 const tabs = {
 	results: "Results",
@@ -19,7 +53,7 @@ const tabs = {
 };
 
 const { isDark } = useData();
-const code = ref(examples.Variables);
+const code = ref(examples.Variables.Assignment);
 const angles = ref("rad");
 const decimals = ref(3);
 const tab = ref("results");
@@ -142,13 +176,28 @@ function selectAll(e) {
 		<div class="panels">
 			<section class="editor">
 				<div class="bar">
-					<button
-						v-for="(src, name) in examples"
-						:key="name"
-						@click="code = src"
-					>
-						{{ name }}
-					</button>
+					<label>
+						Examples
+						<select v-model="code">
+							<optgroup
+								v-for="(items, group) in examples"
+								:key="group"
+								:label="group"
+							>
+								<option
+									v-for="(src, name) in items"
+									:key="name"
+									:value="src"
+								>
+									{{ name }}
+								</option>
+							</optgroup>
+							<!-- v-model picks the first match, so this only shows once the code is edited -->
+							<option :value="code" disabled hidden>
+								Custom
+							</option>
+						</select>
+					</label>
 					<button class="clear" @click="code = ''">Clear</button>
 				</div>
 				<textarea
@@ -333,7 +382,7 @@ h1 {
 	gap: 16px;
 }
 
-.settings label {
+.bar label {
 	display: flex;
 	align-items: center;
 	gap: 6px;
@@ -400,6 +449,11 @@ select {
 	border-radius: 6px;
 	background: var(--vp-c-bg);
 	color: var(--vp-c-text-1);
+}
+
+/* VitePress resets selects to appearance: none, which hides the arrow */
+select {
+	appearance: auto;
 }
 
 .bar button:hover,
