@@ -55,10 +55,10 @@ import { createContext } from '@mathflowjs/mathflow';
 
 const ctx = createContext();
 
-ctx.solve('log(100, 10)');  // 2
-ctx.solve('sin(90)');       // 1 (if angles = 'deg')
-ctx.solve('sqrt(16)');      // 4
-ctx.solve('hypot(3, 4)');   // 5
+ctx.solve('log(100, 10)').value;  // 2
+ctx.solve('sin(90)').value;       // 1 (if angles = 'deg')
+ctx.solve('sqrt(16)').value;      // 4
+ctx.solve('hypot(3, 4)').value;   // 5
 ```
 
 ---
