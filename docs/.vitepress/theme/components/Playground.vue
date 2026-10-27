@@ -57,6 +57,8 @@ const code = ref(examples.Variables.Assignment);
 const angles = ref("rad");
 const decimals = ref(3);
 const tab = ref("results");
+const gutter = ref(null);
+const lineCount = computed(() => code.value.split("\n").length);
 
 // renderer CSS is static; inject it once so rendered expressions are styled
 const { css } = createContext().renderAsHTML("0");
@@ -81,6 +83,10 @@ const output = computed(() => {
 	});
 	return { lines, time: performance.now() - start };
 });
+
+const errorLines = computed(
+	() => new Set(output.value.lines.filter((l) => l.error).map((l) => l.n))
+);
 
 // whole-program views; these don't depend on preferences
 const program = computed(() => {
@@ -200,12 +206,26 @@ function selectAll(e) {
 					</label>
 					<button class="clear" @click="code = ''">Clear</button>
 				</div>
-				<textarea
-					v-model="code"
-					aria-label="MathFlow code"
-					placeholder="2x + 3, with one expression per line"
-					spellcheck="false"
-				></textarea>
+				<!-- numbers stay in step because the textarea doesn't wrap and both scroll together -->
+				<div class="code">
+					<div ref="gutter" class="gutter" aria-hidden="true">
+						<div
+							v-for="n in lineCount"
+							:key="n"
+							:class="{ bad: errorLines.has(n) }"
+						>
+							{{ n }}
+						</div>
+					</div>
+					<textarea
+						v-model="code"
+						aria-label="MathFlow code"
+						placeholder="2x + 3, with one expression per line"
+						spellcheck="false"
+						wrap="off"
+						@scroll="gutter.scrollTop = $event.target.scrollTop"
+					></textarea>
+				</div>
 			</section>
 
 			<section class="output">
@@ -475,9 +495,39 @@ textarea {
 	resize: none;
 }
 
-.editor textarea {
+.code {
 	flex: 1;
+	display: flex;
 	min-height: 300px;
+}
+
+/* identical metrics keep each gutter row level with its textarea line */
+.code > * {
+	font-family: var(--vp-font-family-mono);
+	font-size: 15px;
+	line-height: 26px;
+	padding-top: 16px;
+}
+
+.gutter {
+	flex: none;
+	/* extra bottom room so it can scroll as far as the textarea's horizontal scrollbar allows */
+	padding: 16px 8px 48px 12px;
+	overflow: hidden;
+	text-align: right;
+	color: var(--vp-c-text-3);
+	user-select: none;
+}
+
+.gutter .bad {
+	color: var(--vp-c-danger-1);
+	font-weight: 600;
+}
+
+.code textarea {
+	flex: 1;
+	min-width: 0;
+	padding-left: 8px;
 }
 
 .view textarea {
