@@ -32,6 +32,10 @@ There are no tests or linters beyond Prettier. `pnpm build` is the only real ver
   - `log(x, base)` needs a base; `log(100)` returns `NaN`.
   - Undefined variables silently evaluate to `0`.
   - `fractionDigits: 0` means no rounding.
+  - Rounding happens at every step, not just on the result. At 3 decimals, `pi` becomes `3.142` first, so `2pi` gives `6.284`.
+  - Implicit multiplication across a space silently drops the term after the space (`pi r^2` gives `pi`). `ab` is read as one unknown variable, which counts as `0`, not as `a * b`.
+  - Underscores in names (`total_sum`) cause a LexicalError, even though `docs/guide/variables.md` lists them as valid.
+  - Because of these, check that every playground example gives the exact expected answer before adding it.
   - The renderer's CSS has to be injected separately; the playground does this once with `<component is="style">`.
 - The API pages (`docs/api/*.md`) document the `@mathflowjs/mathflow` version installed as a dependency. Check signatures against `node_modules/@mathflowjs/mathflow/dist/index.d.ts` before documenting or changing API usage.
 
