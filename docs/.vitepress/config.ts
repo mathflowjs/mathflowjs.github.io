@@ -113,6 +113,10 @@ export default defineConfig({
 
 		socialLinks: [
 			{ icon: "github", link: "https://github.com/mathflowjs/mathflow" },
+			{
+				icon: "npm",
+				link: "https://www.npmjs.com/package/@mathflowjs/mathflow",
+			},
 		],
 
 		editLink: {
